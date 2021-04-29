@@ -1,0 +1,70 @@
+.body {
+  background: url(/assets/bgImg.jpg) no-repeat fixed;
+  background-size: cover;
+  background-position: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-height: 100vh;
+  min-height: 90vh;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.container {
+  height: 15vh;
+  width: 70%;
+  min-width: 40rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.key {
+  border: 3px solid black;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+  margin: 1rem;
+  min-width: 60px;
+  max-width: 800px;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  text-shadow: 0 0 5px black;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+}
+
+.sound {
+  color: darkorange;
+  display: block;
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  font-weight: normal;
+}
+
+.playing {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  border-color: darkorange;
+  -webkit-box-shadow: 0 0 10px #ffc600;
+          box-shadow: 0 0 10px #ffc600;
+}
+/*# sourceMappingURL=main.css.map */

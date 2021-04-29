@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drum Kit!!!</title>
+    <link rel="stylesheet" href="dist/css/main.css">
+</head>
+
+<body class="body">
+    <section class="container">
+        <div class="key" data-key="65">
+            <kbd>A</kbd>
+            <span class="sound">clap</span>
+        </div>
+        <div class="key" data-key="83">
+            <kbd>S</kbd>
+            <span class="sound">hihat</span>
+        </div>
+        <div class="key" data-key="68">
+            <kbd>D</kbd>
+            <span class="sound">kick</span>
+        </div>
+        <div class="key" data-key="70">
+            <kbd>F</kbd>
+            <span class="sound">openhat</span>
+        </div>
+        <div class="key" data-key="71">
+            <kbd>G</kbd>
+            <span class="sound">boom</span>
+        </div>
+        <div class="key" data-key="72">
+            <kbd>H</kbd>
+            <span class="sound">ride</span>
+        </div>
+        <div class="key" data-key="74">
+            <kbd>J</kbd>
+            <span class="sound">snare</span>
+        </div>
+        <div class="key" data-key="75">
+            <kbd>K</kbd>
+            <span class="sound">tom</span>
+        </div>
+        <div class="key" data-key="76">
+            <kbd>L</kbd>
+            <span class="sound">tink</span>
+        </div>
+
+        <section>
+            <audio data-key="65" src="sounds/clap.wav"></audio>
+            <audio data-key="83" src="sounds/hihat.wav"></audio>
+            <audio data-key="68" src="sounds/kick.wav"></audio>
+            <audio data-key="70" src="sounds/openhat.wav"></audio>
+            <audio data-key="71" src="sounds/boom.wav"></audio>
+            <audio data-key="72" src="sounds/ride.wav"></audio>
+            <audio data-key="74" src="sounds/snare.wav"></audio>
+            <audio data-key="75" src="sounds/tom.wav"></audio>
+            <audio data-key="76" src="sounds/tink.wav"></audio>
+        </section>
+
+
+        <script>
+            //MY METHOD
+            // document.addEventListener('keydown', function (e) {
+            //     console.log(e);
+            //     switch (e.keyCode) {
+            //         case 65:
+            //             document.querySelector('audio[data-key="65"]').play();
+            //             break;
+            //         case 83:
+            //             document.querySelector('audio[data-key="83"]').play();
+            //             break;
+            //         case 68:
+            //             document.querySelector('audio[data-key="68"]').play();
+            //             break;
+            //         case 70:
+            //             document.querySelector('audio[data-key="70"]').play();
+            //             break;
+            //         case 71:
+            //             document.querySelector('audio[data-key="71"]').play();
+            //             break;
+            //         case 72:
+            //             document.querySelector('audio[data-key="72"]').play();
+            //             break;
+            //         case 74:
+            //             document.querySelector('audio[data-key="74"]').play();
+            //             break;
+            //         case 75:
+            //             document.querySelector('audio[data-key="75"]').play();
+            //             break;
+            //         case 76:
+            //             document.querySelector('audio[data-key="76"]').play();
+            //             break;
+            //     }
+            // })
+
+            //*********************************************************************************//
+            //*********************************************************************************//
+
+            // window.addEventListener('keydown', (e) => { //event on keydown
+            //     const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            //     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            //     if (!audio) return;
+            //     audio.currentTime = 0;
+            //     audio.play();
+            //     key.classList.add('playing');
+            // })
+
+            // const keys = document.querySelectorAll('.key'); //array (node list) of all elem with key class
+            // keys.forEach(key => key.addEventListener('transitionend', (e) => {
+            //     if (e.propertyName !== 'transform') return;
+            //     key.classList.remove('playing');    //key in that version not "this"->this is pointing on window
+
+            // }));
+
+            //*********************************************************************************//
+            //*********************************************************************************//
+
+            //version with functions
+
+            function playSound(e) {
+                const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+                const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+                if (!audio) return;
+                audio.currentTime = 0;
+                audio.play();
+                key.classList.add('playing');
+            }
+            function remTransition(e) {
+                if (e.propertyName !== 'transform') return;
+                this.classList.remove('playing');
+            }
+
+            const keys = document.querySelectorAll('.key'); //array (node list) of all elem with key class
+            keys.forEach(key => key.addEventListener('transitionend', remTransition));
+
+            window.addEventListener('keydown', playSound);
+
+
+
+            //*********************************************************************************//
+            //*********************************************************************************//
+
+            //version with object
+
+            // const playground = {
+            //     keys: document.querySelectorAll('.key'),
+            //     key: document.querySelector(`key[data-key="${e.keyCode}"]`),
+            //     audio: document.querySelector(`audio[data-key="${e.keyCode}"]`),
+            //     playSound(e) {
+            //         const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+            //         const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+            //         if (!audio) return;
+            //         audio.currentTime = 0;
+            //         audio.play();
+            //         key.classList.add('playing');
+            //     },
+            //     remTransition(e) {
+            //         if (e.propertyName !== 'transform') return;
+            //         this.classList.remove('playing');
+            //     }
+            // };
+
+        </script>
+</body>
+
+</html>
