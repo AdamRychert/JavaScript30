@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Clock</title>
+    <link rel="stylesheet" href="/dist/css/styles.css">
+</head>
+
+<body>
+    <section class="clock">
+        <div class="clockFace">
+            <div class="hand hourHand"></div>
+            <div class="hand minHand"></div>
+            <div class="hand secondsHand"></div>
+        </div>
+    </section>
+
+    <script>
+        const hourHand = document.querySelector('.hourHand');
+        const minHand = document.querySelector('.minHand');
+        const secondsHand = document.querySelector('.secondsHand');
+
+        function checkFlicker(ele, deg) {       //resets the transition(otherwise will spin at 90 deg)
+            if (deg === 90) {
+                ele.style.transition = 'all 0.0s'
+            }
+        }
+
+        function setDate() {
+            const now = new Date();
+            const seconds = now.getSeconds();
+            const minutes = now.getMinutes();
+            const hours = now.getHours();
+            const secondsDegrees = ((seconds / 60) * 360) + 90;
+            const minDeg = ((minutes / 60) * 360) + 90;
+            const hourDeg = ((hours / 12) * 360) + 90;
+            secondsHand.style.transform = `rotate(${secondsDegrees}deg)`;
+            minHand.style.transform = `rotate(${minDeg}deg)`;
+            hourHand.style.transform = `rotate(${hourDeg}deg)`;
+            checkFlicker(secondsHand, secondsDegrees)
+            checkFlicker(minHand, minDeg)
+            checkFlicker(hourHand, hourDeg)
+        }
+
+        setInterval(setDate, 1000);
+        setDate();
+    </script>
+</body>
+
+</html>
