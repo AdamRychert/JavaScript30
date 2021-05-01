@@ -1,0 +1,39 @@
+:root {
+  --base: #ffc600;
+  --spacing: 10px;
+  --blur:10px;
+}
+
+img {
+  padding: var(--spacing);
+  background-color: var(--base);
+  -webkit-filter: blur(var(--blur));
+          filter: blur(var(--blur));
+}
+
+label {
+  color: var(--base);
+}
+
+html {
+  font-size: 10px;
+  font-family: 'helvetica neue', sans-serif;
+}
+
+body {
+  background-color: skyblue;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+label {
+  font-size: 5rem;
+  display: inline-block;
+  margin: 7vh 0;
+}
+
+img {
+  height: 45rem;
+}
+/*# sourceMappingURL=style.css.map */
