@@ -70,8 +70,8 @@ nav li {
 
 li.logo {
     max-width: 0;
-    overflow: hidden;
     background: white;
+    overflow: hidden;
     transition: all .5s;
     font-weight: 600;
     font-size: 30px;
